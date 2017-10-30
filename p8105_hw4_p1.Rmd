@@ -26,3 +26,14 @@ pups_data = pups_data %>%
   gather(key = pd_outcome, value = days, "pd_ears":"pd_walk") %>%
   drop_na() 
 ```
+
+Plot the data
+```{r}
+pups_data %>%
+  ggplot(aes(x = days, y = pd_outcome)) + 
+  geom_density_ridges(aes(fill = pd_outcome), scale = .85) +
+  labs(title = "Post-natal Days of Developmental Landmark")
+```
+
+
+As it is shown in the graph, we can see that pd_landmarks first occured in ears and following by pivot, walk, and eyes. Among them, pd_walk and pd_pivot have larger ranges compared to pd_eyes and pd_ears.
