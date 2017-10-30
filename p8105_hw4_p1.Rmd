@@ -1,0 +1,28 @@
+---
+title: "p8105_hw4_p1"
+output: html_document
+---
+
+##Problem 1
+
+
+
+Library and import data set
+```{r}
+library(tidyverse)
+library(haven)
+library(dplyr)
+library(janitor)
+library(ggridges)
+library(ggthemes)
+pups_data = read_csv("FAS_pups.csv",col_types = "ciiiii") %>%
+  clean_names()
+```
+
+Clean the dataset
+```{r}
+
+pups_data = pups_data %>%
+  gather(key = pd_outcome, value = days, "pd_ears":"pd_walk") %>%
+  drop_na() 
+```
